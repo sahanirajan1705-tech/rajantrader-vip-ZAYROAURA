@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajan Trader - Telegram Trader Group</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Exo 2',sans-serif;-webkit-tap-highlight-color:transparent!important;-webkit-touch-callout:none!important;user-select:none}
+        button,a,input,div{ -webkit-tap-highlight-color:transparent!important;outline:none!important}
+        :focus{outline:none!important;box-shadow:none!important}
+        body{background-color:#eaf4ed;background-image:linear-gradient(to right,rgba(0,200,100,.05) 1px,transparent 1px),linear-gradient(to bottom,rgba(0,200,100,.05) 1px,transparent 1px);background-size:25px 25px;display:flex;justify-content:center;align-items:center;min-height:100vh;padding:15px}
+        .phone-container{width:100%;max-width:420px;background:rgba(255,255,255,.85);backdrop-filter:blur(15px);border-radius:35px;box-shadow:0 20px 40px rgba(0,150,80,.15),0 5px 15px rgba(0,0,0,.05);border:1px solid rgba(255,255,255,.6);overflow:hidden;padding:20px 15px 10px;display:flex;flex-direction:column;gap:15px;animation:fadeIn .8s ease-out}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .top-bar{background:#fff;padding:10px 15px;border-radius:50px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 8px 20px rgba(0,0,0,.04);border:1px solid rgba(0,200,100,.1)}
+        .top-left{display:flex;align-items:center;gap:10px}
+        .top-avatar{width:38px;height:38px;flex:none;border-radius:50%;background:linear-gradient(135deg,#0f2e1b,#004d25);display:flex;align-items:center;justify-content:center;border:2px solid #00c853;overflow:hidden}
+        .top-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+        .top-title{font-size:14px;font-weight:700;color:#111}.top-subtitle{font-size:11px;color:#777}
+        .open-btn{background:#e2f9eb;color:#00873e;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;display:flex;align-items:center;gap:6px;text-decoration:none;transition:.3s;cursor:pointer}
+        .open-btn:hover{background:#00c853;color:#fff}.open-btn i{color:#00c853;font-size:8px;animation:pulseDot 1.5s infinite}.open-btn:hover i{color:#fff}
+        @keyframes pulseDot{0%,100%{transform:scale(.9);opacity:1}50%{transform:scale(1.4);opacity:.6}}
+        .main-card{background:#fff;border-radius:30px;padding:25px 15px;display:flex;flex-direction:column;align-items:center;box-shadow:0 10px 30px rgba(0,180,90,.08);position:relative;text-align:center}
+        .avatar-box{position:relative;width:110px;height:110px;margin-bottom:12px}
+        .avatar-circle{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,#0f2e1b,#004d25);display:flex;align-items:center;justify-content:center;border:4px solid #fff;box-shadow:0 10px 25px rgba(0,200,100,.3);position:relative;overflow:hidden}
+        .avatar-circle img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block}
+        .verified-badge{position:absolute;bottom:2px;right:2px;background:#00c853;color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,.1)}
+        .channel-sub{font-size:12px;color:#00873e;font-weight:700;display:flex;align-items:center;gap:6px;margin-bottom:8px;letter-spacing:.5px}
+        .channel-sub i{font-size:8px;color:#00c853;animation:pulseDot 1.5s infinite}
+        .main-heading{font-size:24px;font-weight:800;color:#0d2315;margin-bottom:15px;letter-spacing:.5px}
+        .tags-row{display:flex;gap:8px;justify-content:center;margin-bottom:20px;flex-wrap:wrap}
+        .tag-item{background:#f0f8f3;border:1px solid rgba(0,200,100,.2);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;color:#1b4d2e;display:flex;align-items:center;gap:6px}
+        .tag-item i{color:#00b04c}
+        .cta-btn{width:100%;background:linear-gradient(135deg,#00c853,#00873e);color:#fff;border:0;padding:16px 20px;border-radius:20px;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;box-shadow:0 10px 25px rgba(0,200,83,.4);transition:all .3s ease;text-decoration:none;position:relative;overflow:hidden}
+        .cta-btn:hover{transform:translateY(-2px);box-shadow:0 15px 30px rgba(0,200,83,.5)}.cta-btn i.fa-telegram{font-size:20px}
+        .cta-instruction{font-size:11.5px;color:#777;margin-top:12px;margin-bottom:18px}
+        .member-counter{display:inline-flex;align-items:center;gap:8px;background:#f7fcf9;padding:8px 18px;border-radius:30px;border:1px solid rgba(0,200,100,.15);font-weight:700;color:#111;font-size:14px}
+        .member-counter i{color:#00c853;font-size:16px}
+        .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:5px}
+        .feature-box{background:#fff;border-radius:20px;padding:15px 10px;display:flex;flex-direction:column;align-items:center;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.03);border:1px solid rgba(0,200,100,.08);transition:.3s;text-decoration:none;cursor:pointer}
+        .feature-box:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(0,200,100,.15);border-color:#00c853}
+        .feature-icon-wrap{width:38px;height:38px;background:#edf9f1;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#00c853;font-size:14px;margin-bottom:8px;border:1px solid rgba(0,200,100,.2)}
+        .feature-title{font-size:12px;font-weight:700;color:#111;margin-bottom:3px}.feature-desc{font-size:10px;color:#777;line-height:1.2}
+        .watermark-footer{text-align:center;padding:8px 0}
+        .watermark-badge{display:inline-flex;align-items:center;gap:6px;background:#222;color:#fff;padding:6px 16px;border-radius:20px;font-size:11px;font-weight:600;text-decoration:none;box-shadow:0 4px 15px rgba(0,0,0,.15);transition:.3s}
+        .watermark-badge:hover{background:#00c853;transform:translateY(-1px)}.watermark-badge i{color:#00ff66;font-size:12px}.watermark-badge:hover i{color:#fff}
+    </style>
+</head>
+<body>
+    <div class="phone-container">
+        <div class="top-bar">
+            <div class="top-left">
+                <div class="top-avatar">
+                    <img src="https://i.ibb.co/Cp7L7CPs/file-000000006da881fbaaf0682dd41b069f.png" alt="Rajan Logo">
+                </div>
+                <div>
+                    <div class="top-title">RAJAN TRADER</div>
+                    <div class="top-subtitle">Telegram channel</div>
+                </div>
+            </div>
+            <a href="https://t.me/+8zPmERSMyO0wOWM1" target="_blank" rel="noopener" class="open-btn"><i class="fa-solid fa-circle"></i> Open now</a>
+        </div>
+
+        <div class="main-card">
+            <div class="avatar-box">
+                <div class="avatar-circle">
+                    <img src="https://i.ibb.co/Cp7L7CPs/file-000000006da881fbaaf0682dd41b069f.png" alt="Rajan Logo">
+                </div>
+                <div class="verified-badge"><i class="fa-solid fa-check"></i></div>
+            </div>
+            <div class="channel-sub"><i class="fa-solid fa-circle"></i> Official Telegram channel</div>
+            <h1 class="main-heading">RAJAN TRADER</h1>
+            <div class="tags-row">
+                <div class="tag-item"><i class="fa-solid fa-star"></i> Official</div>
+                <div class="tag-item"><i class="fa-solid fa-shield-halved"></i> Free to join</div>
+                <div class="tag-item"><i class="fa-solid fa-bolt"></i> Daily updates</div>
+            </div>
+            <a href="https://t.me/+8zPmERSMyO0wOWM1" target="_blank" rel="noopener" class="cta-btn">
+                <i class="fa-brands fa-telegram"></i><span>CLICK TO JOIN</span>
+                <i class="fa-solid fa-hand-pointer" style="font-size:14px;margin-left:2px"></i>
+                <i class="fa-solid fa-arrow-right" style="font-size:14px"></i>
+            </a>
+            <div class="cta-instruction">Telegram opens and you send a join request</div>
+            <div class="member-counter"><i class="fa-solid fa-user-group"></i><span>114 Members</span></div>
+        </div>
+
+        <div class="features-grid">
+            <a href="https://t.me/+8zPmERSMyO0wOWM1" target="_blank" rel="noopener" class="feature-box">
+                <div class="feature-icon-wrap"><i class="fa-solid fa-hand-pointer"></i></div>
+                <div class="feature-title">Tap the button</div><div class="feature-desc">Telegram opens</div>
+            </a>
+            <a href="https://t.me/+8zPmERSMyO0wOWM1" target="_blank" rel="noopener" class="feature-box">
+                <div class="feature-icon-wrap"><i class="fa-solid fa-paper-plane"></i></div>
+                <div class="feature-title">Send request</div><div class="feature-desc">One tap inside</div>
+            </a>
+            <a href="https://t.me/+8zPmERSMyO0wOWM1" target="_blank" rel="noopener" class="feature-box">
+                <div class="feature-icon-wrap"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="feature-title">Get approved</div><div class="feature-desc">By the admin</div>
+            </a>
+        </div>
+
+        <div class="watermark-footer">
+            <a href="https://t.me/ZaYroAuraa" target="_blank" rel="noopener" class="watermark-badge"><i class="fa-solid fa-cube"></i> Made By @ZAYROAURA</a>
+        </div>
+    </div>
+</body>
+</html>
